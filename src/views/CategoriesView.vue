@@ -1,11 +1,13 @@
 <template>
-<div>Pagina delle categorie</div>
+    <div>Pagina delle categorie</div>
 
-    
+
 </template>
     
 <script>
+export default {
 
+}
 </script>
 
 <style>
