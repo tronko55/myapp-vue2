@@ -1,0 +1,52 @@
+
+        <!-- copiare questa sezione per mettere le categorie; il bottone sarà vedi tutte -->
+        <!-- per ogni ricetta (song) nell'elenco di ricette (da creare come data: function(){return { songs[]}}) per pushare le ricette nell'array quell che devo fare è definire la funzione in api... -->
+        <!-- <div class="card" v-for="song in songs" :key="song.title" id="listaCanzoni"> -->
+        <!-- modificare l'hoover come piace a me -->
+        <!-- <md-card md-with-hover> -->
+        <!-- link alla pagina del mealview; qua loro fanno anche una cronologia, magari carina per la home page-->
+        <!-- <md-list-item :to="'/songs/' + song.title" @click="toggleHistory(song)">
+                    <md-ripple>
+                        <md-card-media-cover md-solid>
+                            <md-card-media>
+                                <img :src="song.song_art_image_thumbnail_url" alt="Title" />
+                            </md-card-media>
+
+                            <md-card-area>
+                                <md-card-header>
+                                    <div class="md-title">
+                                        {{ song.title }}
+                                    </div>
+                                </md-card-header> -->
+        <!-- 
+                                tra i bottoni deve esserci il salva che quindi attiva la funzione per il db
+                                <md-card-actions>
+                                    <md-button @click.prevent="toggleFavorite(song)"
+                                        class="md-icon-button md-list-action">
+                                        <md-icon>
+                                            operatore ternario
+                                            {{
+    isFavorite(song) ?"favorite": "favorite_border"
+                                            }}</md-icon>
+                                    </md-button>
+                                </md-card-actions>
+                            </md-card-area>
+                        </md-card-media-cover>
+                    </md-ripple>
+                </md-list-item>
+            </md-card>
+        </div> -->
+
+        <!-- bottone per caricarne altre -->
+        <!-- <md-button @click="loadMore()" class="md-primary md-raised" id="BtnLoadMore"
+            :disabled="songs.length === 0 || per_Page > songs.length">Load More</md-button> -->
+
+        <!-- lo spinner è carino, magari centrato -->
+        <!-- <md-progress-spinner v-if="loading" :md-diameter="30" :md-stroke="3"
+            md-mode="indeterminate"></md-progress-spinner> -->
+
+
+        <!-- <md-empty-state v-if="songs != null && songs.length == 0" md-rounded md-icon="manage_history"
+            md-label="Problema nel caricamento o nella ricerca"
+            md-description="Si prega di effettuare una nuova ricerca">
+        </md-empty-state> -->

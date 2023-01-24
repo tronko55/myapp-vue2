@@ -28,21 +28,6 @@ const app = initializeApp(firebaseConfig);
 
 export default {
     /**
-     * Effettua richiesta alla API
-     * @param {*} stringa
-     */
-    eseguiRichiesta: function (stringa, n) {
-        return (
-            "https://api.genius.com/search?q=" +
-            stringa +
-            "&access_token=" +
-            geniusConfig.apiKey +
-            "&per_page=" +
-            n
-        );
-    },
-
-    /**
      *
      * Si usa una Promise di Ajax poiché non posso accedere direttamente ai dati
      * Restituisce la lista delle canzoni in base alla ricerca effettuata.
