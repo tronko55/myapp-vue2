@@ -1,16 +1,11 @@
 import axios from "axios";
-
 import firebase from "firebase/app";
+import { initializeApp } from "firebase/app";
 import "firebase/firestore";
 
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -22,10 +17,7 @@ const firebaseConfig = {
     appId: "1:304857663343:web:8c6762762e5018414fca9a"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-
+// qui dentro tutte le funzioni per il manage di dati nel database
 export default {
     /**
      *
