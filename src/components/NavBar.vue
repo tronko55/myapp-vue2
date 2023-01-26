@@ -101,11 +101,6 @@ export default {
         position: relative;
     }
 }
-
-.search {
-    max-width: 50%;
-    text-align: center;
-}
 </style> 
 
 
