@@ -1,7 +1,17 @@
 import axios from "axios";
 
-const instance = axios.create({
-    baseURL: 'https://www.themealdb.com/api/json/v1/1'
-})
 
-export default instance
+export default {
+
+    // prendi dall'api l'array di meals
+    getMealsCategories: function () {
+        return axios.get('https://www.themealdb.com/api/json/v1/1/categories.php', {
+            params: {
+                a: "categories.php"
+            }
+        })
+    },
+
+}
+
+

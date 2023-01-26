@@ -1,29 +1,32 @@
 <template>
     <div>
-
-        <pre> {{ ingredients }}</pre>
+        <!-- <pre> {{ ingredients }} </pre>
+        <div v-for="ingredient in this.ingredients" :key="ingredient.value.idIngredient">
+            <MdCard />
+        </div> -->
     </div>
 </template>
 
 <script>
-import axiosApi from '@/axiosApi';
+// import axiosApi from '@/axiosApi';
+// import { MdCard } from 'vue-material';
 
-
-const ingredients = ([]);
+// const ingredients = ([]);
 export default {
 
     data: function () {
         return {
-            ingredients: [
-            ]
+            // ingredients: [],
         }
 
     },
-    mounted: async function () {
-        const response = await axiosApi.get('/list.php?i=list')
-        console.log(response.data)
-        ingredients.value = response.data
+    // mounted: async function () {
+    //     const response = await axiosApi.getMeals()
+    //     console.log(response.data)
 
-    },
+    // },
+    components: {
+        // MdCard
+    }
 }
 </script>
