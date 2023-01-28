@@ -37,6 +37,7 @@ export default {
     data: function () {
         return {
             categories: {},
+            mealsList: []
         }
     },
     mounted: async function () {
@@ -44,7 +45,8 @@ export default {
             console.log(result.data.categories);
             this.categories = result.data.categories;
         });
-    }
+    },
+
 }
 </script>
 

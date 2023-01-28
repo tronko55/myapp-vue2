@@ -25,8 +25,10 @@
             </div>
             <!-- immagine -->
             <div>
+
                 <div>
                     <img :src="meal[0].strMealThumb" width="600px" />
+
                 </div>
             </div>
 
@@ -60,7 +62,6 @@
 </template>
 
 <script>
-// import load from "../axiosApi";
 import axiosApi from "../axiosApi";
 
 export default {

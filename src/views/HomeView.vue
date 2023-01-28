@@ -1,7 +1,6 @@
 <template>
-    <div>
-
-        <div class="md-layout md-gutter md-alignment-center">
+    <div class="md-layout md-gutter md-alignment-center">
+        <div>
             <router-link :to="'/meal/' + randomMeal.idMeal">
                 <md-card class="md-card" md-with-hover to="/">
 
@@ -17,7 +16,7 @@
 
                     <md-card-actions>
                         <md-button @click.prevent>
-                            <md-icon>bookmark</md-icon>
+                            <md-icon>bookmark_add</md-icon>
                         </md-button>
                         <md-button>Read more</md-button>
                     </md-card-actions>
@@ -25,68 +24,37 @@
                 </md-card></router-link>
         </div>
 
-        <div v-for="meal in this.mealsList" :key="meal.idMeal"
-            class="item-container md-layout-item md-xlarge-size-20 md-large-size-20 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
-            <router-link :to="'/meal/' + meal.idMeal">
-                <!-- /drink/id da inviare a drink.vue -->
-                <md-card>
-                    <md-card-media-cover md-solid>
-                        <md-card-media>
-                            <img :src="meal.strMealThumb" />
-                        </md-card-media>
+        <div class="md-layout-item md-gutter md-alignment-center">
 
-                        <md-card-area>
-                            <md-card-header>
-                                <span class="md-title">{{ meal.strMeal }}</span>
-                            </md-card-header>
-                            <md-card-actions>
-                                <md-button class="md-icon-button" @click.prevent>
-                                    <md-icon>
-                                        <span class="material-symbols-outlined">
-                                            bookmark_add
-                                        </span>
+            <div v-for="meal in this.mealsList" :key="meal.idMeal"
+                class="item-container md-layout-item md-xlarge-size-20 md-large-size-20 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
+                <router-link :to="'/meal/' + meal.idMeal">
+                    <!-- /drink/id da inviare a drink.vue -->
+                    <md-card>
+                        <md-card-media-cover md-solid>
+                            <md-card-media>
+                                <img :src="meal.strMealThumb" />
+                            </md-card-media>
 
-                                    </md-icon>
-                                </md-button>
-                            </md-card-actions>
-                        </md-card-area>
-                    </md-card-media-cover>
-                </md-card></router-link>
+                            <md-card-area>
+                                <md-card-header>
+                                    <span class="md-title">{{ meal.strMeal }}</span>
+                                </md-card-header>
+                                <md-card-actions>
+                                    <md-button class="md-icon-button" @click.prevent>
+                                        <md-icon>
+                                            <span class="material-symbols-outlined">
+                                                bookmark_add
+                                            </span>
+
+                                        </md-icon>
+                                    </md-button>
+                                </md-card-actions>
+                            </md-card-area>
+                        </md-card-media-cover>
+                    </md-card></router-link>
+            </div>
         </div>
-
-        <!-- <div class="md-layout md-gutter md-alignment-center">
-                <div v-for="meal in this.mealsList" :key="meal.idMeal">
-
-                    <md-card class="md-card" md-with-hover>
-                        <md-card-media>
-                            <img :src="mealsList.strMealThumb">
-                        </md-card-media>
-
-                        <md-card-header>
-                            <div class="md-title">{{ mealsList.strMeal }}</div>
-                            <div class="md-subhead">{{ mealsList[3].strCategory }}</div>
-                        </md-card-header>
-
-                        <md-card-expand>
-                            <md-card-actions md-alignment="space-between">
-                                <div>
-                                    <md-button>Action</md-button>
-                                </div>
-
-                                <md-card-expand-trigger>
-                                    <md-button>Learn more</md-button>
-                                </md-card-expand-trigger>
-                            </md-card-actions>
-
-                            <md-card-expand-content>
-                                <md-card-content>
-                                    {{ mealsList[3].strInstructions }}
-                                </md-card-content>
-                            </md-card-expand-content>
-                        </md-card-expand>
-                    </md-card>
-                </div>
-            </div> -->
 
     </div>
 </template>
@@ -100,7 +68,7 @@ export default {
     data: function () {
         return {
             randomMeal: {},
-            mealsList: {}
+            mealsList: []
         }
 
     },
@@ -112,19 +80,6 @@ export default {
         axiosApi.getByLetter('a').then((result) => {
             console.log(result.data);
             this.mealsList = result.data.meals
-            // console.log(this.mealsList)
-            // let mealsList = result.data;
-            // console.log(mealsList)
-            // // array di risultato
-            // const array = [];
-            // for (let i = tmp; i < mealsList.length; i++) {
-            //     let meal = mealsList[i].result;
-
-            //     array.push(meal);
-            // }
-            // console.log(array);
-            // return array;
-
         });
 
 

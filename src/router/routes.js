@@ -32,8 +32,8 @@ const routes =
           component: MealViewVue
         },
         {
-          path: "/categories/:category*",
-          name: "byCategory",
+          path: "/:category*",
+          name: "category",
           component: MealsByCategory,
         }
       ]
