@@ -104,12 +104,12 @@ export default {
         }
 
     },
-    mounted: async function () {
+    mounted: function () {
         axiosApi.getRandomMeal().then((result) => {
             console.log(result.data);
             this.randomMeal = result.data.meals[0];
         });
-        axiosApi.getMeals().then((result) => {
+        axiosApi.getByLetter('a').then((result) => {
             console.log(result.data);
             this.mealsList = result.data.meals
             // console.log(this.mealsList)
