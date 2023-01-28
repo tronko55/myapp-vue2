@@ -5,6 +5,7 @@ import DefaultLayoutVue from '@/components/DefaultLayout.vue'
 import MealViewVue from '@/views/MealView.vue'
 import MealsByCategory from '@/views/MealsByCategory.vue'
 
+
 const routes =
   [
     {
@@ -20,6 +21,9 @@ const routes =
           path: '/categories',
           name: 'categories',
           component: CategoriesView,
+          children: [
+
+          ]
         },
         {
           path: '/favourites',

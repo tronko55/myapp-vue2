@@ -5,7 +5,7 @@
 
             <div v-for="meal in this.mealsList" :key="meal.idMeal"
                 class="item-container md-layout-item md-xlarge-size-20 md-large-size-20 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
-                <router-link :to="'/meal/' + meal.idMeal">
+                <router-link :to="meal.idMeal">
                     <!-- /drink/id da inviare a drink.vue -->
                     <md-card>
                         <md-card-media-cover md-solid>
@@ -39,7 +39,7 @@
 import axiosApi from "../axiosApi";
 
 export default {
-    name: "MealByCategory",
+    name: "MealsByCategory",
     data: function () {
         return {
             mealsList: {},
@@ -51,8 +51,8 @@ export default {
         this.category = this.$route.params.category.split('/')[1];
         console.log(this.category);
         axiosApi.getByCategory(this.category).then((result) => {
-            console.log(result.data);
-            this.mealsList = result.data.meals
+            console.log(result);
+            this.mealsList = result.data.meals[0]
         });
 
     }

@@ -1,5 +1,5 @@
 <template>
-    <div class="md-layout">
+    <div class="md-layout md-gutter md-alignment-center">
 
 
         <div
@@ -74,11 +74,11 @@ export default {
         };
     },
     mounted: function () {
-        // dopo aver costruito il template
-        // var getId = ''
+
         console.log("idMealPath: " + this.$route.params.id);
 
-        this.idMeal = this.$route.params.id.split('/')[1];
+        // this.idMeal = this.$route.params.id.split('/')[1];
+        this.idMeal = this.$route.params.id
         console.log(this.idMeal);
         this.lengthIngredients = 0;
 

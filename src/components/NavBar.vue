@@ -1,6 +1,6 @@
 <template>
     <div>
-        <md-toolbar class="md-large md-dense md-primary">
+        <md-toolbar class="md-dense md-primary">
             <!-- Prima riga -->
             <div class="md-toolbar-row">
                 <div class="md-toolbar-section-start">
@@ -9,24 +9,28 @@
                         <md-icon>menu</md-icon>
                     </md-button>
 
-                    <span class="md-title">Titolo pagina</span>
+                    <!-- <span class="md-title">Titolo pagina</span> -->
+                </div>
+                <!-- Seconda riga -->
+                <div class="md-toolbar tabs-row">
+                    <md-tabs class="md-primary">
+                        <md-tab id="tab-home" md-label="Home" :to='"/"'></md-tab>
+                        <md-tab id="tab-pages" md-label="Categories" :to='"/categories"'></md-tab>
+                        <md-tab id="tab-favorites" md-label="Favorites" :to='"/favourites"'></md-tab>
+                    </md-tabs>
                 </div>
 
                 <div class="md-toolbar-section-end">
-                    <md-button class="md-icon-button">
-                        <md-icon>search</md-icon>
-                    </md-button>
+                    <md-field class="search-bar">
+                        <md-input v-model="searchTerm" @input="search" @keyup.enter="search"
+                            class="md-search-field-input" type="text" placeholder="Search"></md-input>
+                        <md-icon class="md-search-field-icon" @click="search">search</md-icon>
+                    </md-field>
                 </div>
             </div>
 
-            <!-- Seconda riga -->
-            <div class="md-toolbar-row">
-                <md-tabs class="md-primary">
-                    <md-tab id="tab-home" md-label="Home" to="/"></md-tab>
-                    <md-tab id="tab-pages" md-label="Categories" to="/categories"></md-tab>
-                    <md-tab id="tab-favorites" md-label="Favorites" to="/favourites"></md-tab>
-                </md-tabs>
-            </div>
+
+
         </md-toolbar>
 
         <md-drawer :md-active.sync="menuVisible">
@@ -45,13 +49,9 @@
 
                 <md-list-item>
                     <md-icon>star</md-icon>
-                    <span class="md-list-item-text">Preferiti</span>
+                    <span class="md-list-item-text">Favourites</span>
                 </md-list-item>
 
-                <md-list-item>
-                    <md-icon>info</md-icon>
-                    <span class="md-list-item-text">About</span>
-                </md-list-item>
             </md-list>
         </md-drawer>
 
@@ -63,42 +63,41 @@
 export default {
     name: 'LastRowFixed',
     data: () => ({
-        menuVisible: false
-    })
+        menuVisible: false,
+        searchTerm: ""
+    }),
+    methods: {
+        search() {
+            // perform search here using the `searchTerm` variable
+        }
+    }
 }
 </script>
 
 
 <style lang="scss" scoped>
-.md-app {
-    max-height: 400px;
-    border: 1px solid rgba(#000, .12);
-}
-
-// Demo purposes only
 .md-drawer {
     width: 230px;
     max-width: calc(100vw - 125px);
 }
 
-@media (max-width: 400px) {
+.search-bar {
+    color: white;
+}
 
-    //Sposta i bottoni del menù in colonna per schermi < 400px
-    .md-tabs-navigation {
-        flex-direction: column;
-    }
-
-    .md-toolbar-section-end {
-        //Sposta bottone Logout del menù in colonna per schermi < 400px
-        flex-direction: row-reverse;
+@media screen {
+    .md-icon-button {
+        display: none;
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
+    .md-icon-button {
+        display: block;
+    }
 
-    //Evita che footer possa coprire le card su schermi fino a max 700px
-    #footer {
-        position: relative;
+    .tabs-row {
+        display: none;
     }
 }
 </style> 
