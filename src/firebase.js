@@ -139,43 +139,5 @@ export default {
                 }
                 return ratingData;
             });
-    },
-
-    addToHistory: function (song) {
-        const id = this.getUsername() + "-" + song.id;
-        song.user = this.getUsername();
-        return db
-            .collection("history")
-            .doc(id)
-            .set(song)
-            .then(() => {
-                console.log("Salvato in cronologia");
-                return song;
-            });
-    },
-
-    getHistory: function () {
-        return db
-            .collection("history")
-            .where("user", "==", this.getUsername())
-            .get()
-            .then((result) => {
-                const array = [];
-                result.forEach((doc) => {
-                    array.push(doc.data());
-                });
-                return array;
-            });
-    },
-    removeFromHistory: function (song) {
-        const id = this.getUsername() + "-" + song.id;
-        return db
-            .collection("history")
-            .doc(id)
-            .delete()
-            .then(() => {
-                console.log("Eliminato da cronologia");
-                return song;
-            });
     }
 };

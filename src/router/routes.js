@@ -3,6 +3,7 @@ import FavouritesView from "../views/FavouritesView.vue"
 import CategoriesView from "../views/CategoriesView.vue"
 import DefaultLayoutVue from '@/components/DefaultLayout.vue'
 import MealViewVue from '@/views/MealView.vue'
+// import MealsByCategory from '@/views/MealsByCategory.vue'
 
 const routes =
   [
@@ -11,14 +12,21 @@ const routes =
       component: DefaultLayoutVue,
       children: [
         {
-          path: '/home',
+          path: '/',
           name: 'home',
           component: HomeView
         },
         {
           path: '/categories',
           name: 'categories',
-          component: CategoriesView
+          component: CategoriesView,
+          // children: [
+          //   {
+          //     path: "/:category?",
+          //     name: "byCategory",
+          //     component: MealsByCategory,
+          //   },
+          // ]
         },
         {
           path: '/favourites',
@@ -26,7 +34,7 @@ const routes =
           component: FavouritesView // alternativa per non importare all'inizio: () => import('../views/Favourites.vue')
         },
         {
-          path: '/meal',
+          path: 'meal/:id*',
           name: 'meal',
           component: MealViewVue
         }
