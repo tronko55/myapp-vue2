@@ -14,9 +14,9 @@
                 <!-- Seconda riga -->
                 <div class="md-toolbar tabs-row">
                     <md-tabs class="md-primary">
-                        <md-tab id="tab-home" md-label="Home" :to='"/"'></md-tab>
-                        <md-tab id="tab-pages" md-label="Categories" :to='"/categories"'></md-tab>
-                        <md-tab id="tab-favorites" md-label="Favorites" :to='"/favourites"'></md-tab>
+                        <md-tab id="tab-home" md-label="Home" :to="'/'"></md-tab>
+                        <md-tab id="tab-pages" md-label="Categories" :to="'/categories'"></md-tab>
+                        <md-tab id="tab-favorites" md-label="Favorites" :to="'/favourites'"></md-tab>
                     </md-tabs>
                 </div>
 

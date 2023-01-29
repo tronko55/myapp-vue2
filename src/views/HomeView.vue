@@ -16,7 +16,8 @@
 
                     <md-card-actions>
                         <md-button @click.prevent>
-                            <md-icon>bookmark_add</md-icon>
+                            <!-- <md-icon v-if="isFavorite(meal) === -1">bookmark_add</md-icon> -->
+                            <md-icon>bookmark_add </md-icon>
                         </md-button>
                         <md-button>Read more</md-button>
                     </md-card-actions>
@@ -51,6 +52,7 @@
 <script>
 import axiosApi from '@/axiosApi';
 import NavigationByLetter from '@/components/NavigationByLetter.vue';
+// import firebaseService from '@/firebaseService';
 
 export default {
 
@@ -70,6 +72,10 @@ export default {
     mounted: function () {
         this.loading = true;
         this.loadCards();
+        // firebaseService.getFavorites().then((favs) => {
+        //     // promise
+        //     this.favorites = favs;
+        // })
     },
     methods: {
         loadCards: function () {
@@ -84,7 +90,7 @@ export default {
                 this.mealsList = result.data.meals
                 this.loading = false;
             });
-        }
+        },
     },
     components: {
         NavigationByLetter
