@@ -73,14 +73,10 @@ export default {
         for (let i = 0; i < this.lengthIngredients; i++) {
             this.ingredientChecked.push(false);
         }
-
         console.log("idMealPath: " + this.$route.params.id);
-
-        // this.idMeal = this.$route.params.id.split('/')[1];
         this.idMeal = this.$route.params.id
         console.log(this.idMeal);
         this.lengthIngredients = 0;
-
         axiosApi.getMealDetails(this.idMeal).then((response) => {
             // ho i dettagli
             this.meal = response.data.meals; // prendo il primo valore restituito

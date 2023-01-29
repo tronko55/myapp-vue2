@@ -1,31 +1,34 @@
 <template>
+    <div>
+        <md-progress-bar v-show="this.loading" class="md-accent" md-mode="query"></md-progress-bar>
 
-    <div class="md-layout md-gutter md-alignment-center">
+        <div class="md-layout md-gutter md-alignment-center">
 
-        <div class="md-card" v-for="category in this.categories" :key="category.strCategory">
-            <router-link :to="'/categories/' + category.strCategory">
-                <md-card md-with-hover>
-                    <md-card-media-cover md-text-scrim>
-                        <md-card-media md-ratio="16/9">
-                            <img :src="category.strCategoryThumb">
-                        </md-card-media>
+            <div class="md-card" v-for="category in this.categories" :key="category.strCategory">
+                <router-link :to="'/categories/' + category.strCategory">
+                    <md-card md-with-hover>
+                        <md-card-media-cover md-text-scrim>
+                            <md-card-media md-ratio="16/9">
+                                <img :src="category.strCategoryThumb">
+                            </md-card-media>
 
-                        <md-card-area>
-                            <md-card-header>
-                                <span class="md-title">{{ category.strCategory }}</span>
-                            </md-card-header>
+                            <md-card-area>
+                                <md-card-header>
+                                    <span class="md-title">{{ category.strCategory }}</span>
+                                </md-card-header>
 
-                            <!-- <md-card-actions>
+                                <!-- <md-card-actions>
                             <md-button class="md-icon-button">
                                 <md-icon>favorite</md-icon>
                             </md-button>
 
                         </md-card-actions> -->
 
-                        </md-card-area>
-                    </md-card-media-cover>
-                </md-card>
-            </router-link>
+                            </md-card-area>
+                        </md-card-media-cover>
+                    </md-card>
+                </router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -37,13 +40,15 @@ export default {
     data: function () {
         return {
             categories: {},
-            mealsList: []
+            mealsList: [],
+            loading: true
         }
     },
-    mounted: async function () {
+    mounted: function () {
         axiosApi.getMealsCategories().then((result) => {
             console.log(result.data.categories);
             this.categories = result.data.categories;
+            this.loading = false
         });
     },
 

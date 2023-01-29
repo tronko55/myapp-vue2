@@ -1,7 +1,11 @@
 <template>
     <div>
+        <md-progress-bar v-if="this.loading" class="md-accent" md-mode="query"></md-progress-bar>
         <navigation-by-letter></navigation-by-letter>
         <md-card-container class="md-layout md-gutter md-alignment-center">
+
+
+
             <router-link :to="randomMeal.idMeal">
                 <md-card class="md-card" md-with-hover to="/">
 
@@ -57,23 +61,30 @@ export default {
     data: function () {
         return {
             randomMeal: {},
-            mealsList: []
+            mealsList: [],
+            loading: false
         }
 
     },
     mounted: function () {
-        axiosApi.getRandomMeal().then((result) => {
-            console.log(result.data);
-            this.randomMeal = result.data.meals[0];
-        });
-        axiosApi.getByLetter('a').then((result) => {
-            console.log(result.data);
-            this.mealsList = result.data.meals
-        });
-
+        this.loading = true;
+        this.loadCards()
 
     },
     methods: {
+        loadCards: function () {
+            this.loading = true
+            axiosApi.getRandomMeal().then((result) => {
+                console.log(result.data);
+                this.randomMeal = result.data.meals[0];
+                this.loading = false;
+            });
+            axiosApi.getByLetter('b').then((result) => {
+                console.log(result.data);
+                this.mealsList = result.data.meals
+                this.loading = false;
+            });
+        }
     },
     components: {
         NavigationByLetter
