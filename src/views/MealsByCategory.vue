@@ -1,36 +1,32 @@
 <template>
     <div>
+        <md-progress-bar v-show="loading" class="md-accent" md-mode="query"></md-progress-bar>
         filtra per categoria
+
         <div class="md-layout-item md-gutter md-alignment-center">
 
-            <div v-for="meal in this.mealsList" :key="meal.idMeal"
-                class="item-container md-layout-item md-xlarge-size-20 md-large-size-20 md-medium-size-50 md-small-size-50 md-xsmall-size-100">
-                <router-link :to="meal.idMeal">
-                    <!-- /drink/id da inviare a drink.vue -->
-                    <md-card>
-                        <md-card-media-cover md-solid>
+            <md-card-container class="row-two">
+                <div v-for="meal in mealsList" :key="meal.idMeal">
+                    <router-link :to="meal.idMeal">
+                        <md-card class="md-card" md-with-hover to="/">
                             <md-card-media>
                                 <img :src="meal.strMealThumb" />
                             </md-card-media>
+                            <md-card-header>
+                                <div class="md-title">{{ meal.strMeal }}</div>
+                                <div class="md-subhead">{{ meal.strCategory }}</div>
+                            </md-card-header>
+                            <md-card-actions>
+                                <md-button @click.prevent>
+                                    <md-icon>bookmark_add</md-icon>
+                                </md-button>
+                                <md-button>Read more</md-button>
+                            </md-card-actions>
+                        </md-card>
+                    </router-link>
+                </div>
+            </md-card-container>
 
-                            <md-card-area>
-                                <md-card-header>
-                                    <span class="md-title">{{ meal.strMeal }}</span>
-                                </md-card-header>
-                                <md-card-actions>
-                                    <md-button class="md-icon-button" @click.prevent>
-                                        <md-icon>
-                                            <span class="material-symbols-outlined">
-                                                bookmark_add
-                                            </span>
-
-                                        </md-icon>
-                                    </md-button>
-                                </md-card-actions>
-                            </md-card-area>
-                        </md-card-media-cover>
-                    </md-card></router-link>
-            </div>
         </div>
     </div>
 </template>
@@ -43,16 +39,18 @@ export default {
     data: function () {
         return {
             mealsList: {},
-            category: null
+            category: null,
+            loading: true
         };
     },
     mounted: function () {
         console.log("categoryPath: " + this.$route.params.category);
-        this.category = this.$route.params.category.split('/')[1];
+        this.category = this.$route.params.category;
         console.log(this.category);
         axiosApi.getByCategory(this.category).then((result) => {
-            console.log(result);
-            this.mealsList = result.data.meals[0]
+            console.log(result.data);
+            this.mealsList = result.data.meals
+            this.loading = false
         });
 
     }

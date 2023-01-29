@@ -11,9 +11,16 @@
 export default {
     data() {
         return {
-            letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+            letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),
         }
-    }
+    },
+    props: {
+        letter: {
+            type: String,
+            required: true
+        }
+    },
+
 }
 </script>
 

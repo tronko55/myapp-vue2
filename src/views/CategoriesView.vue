@@ -1,11 +1,11 @@
 <template>
     <div>
-        <md-progress-bar v-show="this.loading" class="md-accent" md-mode="query"></md-progress-bar>
+        <md-progress-bar v-show="loading" class="md-accent" md-mode="query"></md-progress-bar>
 
         <div class="md-layout md-gutter md-alignment-center">
 
-            <div class="md-card" v-for="category in this.categories" :key="category.strCategory">
-                <router-link :to="'/categories/' + category.strCategory">
+            <div class="md-card" v-for="category in categories" :key="category.strCategory">
+                <router-link :to="{ name: 'category', params: { category: category.strCategory } }">
                     <md-card md-with-hover>
                         <md-card-media-cover md-text-scrim>
                             <md-card-media md-ratio="16/9">
