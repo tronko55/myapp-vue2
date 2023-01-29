@@ -24,8 +24,7 @@
         </md-card-container>
 
         <md-card-container class="row-two">
-            <div v-for="meal in this.mealsList" :key="meal.idMeal"
-                class="md-layout-item md-gutter md-alignment-center ">
+            <div v-for="meal in this.mealsList" :key="meal.idMeal">
                 <router-link :to="meal.idMeal">
                     <md-card class="md-card" md-with-hover to="/">
                         <md-card-media>
@@ -45,6 +44,7 @@
                 </router-link>
             </div>
         </md-card-container>
+
     </div>
 </template>
 
@@ -81,7 +81,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style >
 .md-card {
     width: 320px;
     margin: 4px;
@@ -92,5 +92,7 @@ export default {
 .row-two {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    /* align items horizontally in the center */
 }
 </style>

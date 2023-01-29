@@ -39,17 +39,17 @@
             <md-list>
                 <md-list-item>
                     <md-icon>home</md-icon>
-                    <span class="md-list-item-text">Home</span>
+                    <md-list-item :to="'/'">Home</md-list-item>
                 </md-list-item>
 
                 <md-list-item>
                     <md-icon>send</md-icon>
-                    <span class="md-list-item-text">Categories</span>
+                    <md-list-item :to="'/categories'">Categories</md-list-item>
                 </md-list-item>
 
                 <md-list-item>
                     <md-icon>star</md-icon>
-                    <span class="md-list-item-text">Favourites</span>
+                    <md-list-item :to="'/favourites'">Favourites</md-list-item>
                 </md-list-item>
 
             </md-list>

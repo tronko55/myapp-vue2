@@ -25,11 +25,24 @@ export default {
 
 .letter-nav a {
     padding: 8px;
+    font-size: 16px;
     text-decoration: none;
     color: black;
 
     &:hover {
         background-color: #eee;
+    }
+}
+
+@media (max-width: 600px) {
+    .letter-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .letter-nav a {
+        padding: 8px;
+        font-size: 16px;
     }
 }
 </style>
