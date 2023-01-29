@@ -7,7 +7,7 @@
 
             <md-card-container class="row-two">
                 <div v-for="meal in mealsList" :key="meal.idMeal">
-                    <router-link :to="meal.idMeal">
+                    <router-link :to="{ name: 'meal', params: { id: meal.idMeal } }">
                         <md-card class="md-card" md-with-hover to="/">
                             <md-card-media>
                                 <img :src="meal.strMealThumb" />

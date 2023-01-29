@@ -1,10 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDfSgQ_bvkhubHtNQMpAmiD96CVP1LUCNQ",
@@ -14,6 +10,11 @@ const firebaseConfig = {
     messagingSenderId: "304857663343",
     appId: "1:304857663343:web:8c6762762e5018414fca9a"
 };
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
 
 // qui dentro tutte le funzioni per il manage di dati nel database
 export default {

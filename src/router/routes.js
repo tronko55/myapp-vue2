@@ -15,7 +15,10 @@ const routes =
         {
           path: '/',
           name: 'home',
-          component: HomeView
+          component: HomeView,
+          children: [
+
+          ]
         },
         {
           path: '/categories',
@@ -31,14 +34,18 @@ const routes =
           component: FavouritesView // alternativa per non importare all'inizio: () => import('../views/Favourites.vue')
         },
         {
-          path: '/:id*',
+          path: '/meal/:id',
           name: 'meal',
           component: MealViewVue
         },
         {
-          path: "/:category*",
+          path: "/category/:category",
           name: "category",
           component: MealsByCategory,
+        },
+        {
+          path: "/byLetter/:letter",
+          name: "byLetter"
         }
       ]
     }

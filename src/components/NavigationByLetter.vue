@@ -1,7 +1,10 @@
 <template>
     <div>
         <div class="letter-nav">
-            <router-link v-for="letter in letters" :key="letter" :to="`/letter/${letter}`">{{ letter }}</router-link>
+            <router-link v-for="letter in letters" :key="letter"
+                :to="{ name: 'byLetter', params: { letter: letter } }">{{
+    letter
+                }}</router-link>
         </div>
         <router-view />
     </div>
@@ -17,7 +20,8 @@ export default {
     props: {
         letter: {
             type: String,
-            required: true
+            required: true,
+
         }
     },
 

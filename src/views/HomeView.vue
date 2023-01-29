@@ -1,9 +1,9 @@
 <template>
     <div>
         <md-progress-bar v-if="this.loading" class="md-accent" md-mode="query"></md-progress-bar>
-        <navigation-by-letter :letter="letter"></navigation-by-letter>
+        <navigation-by-letter v-model="letter"></navigation-by-letter>
         <md-card-container class="md-layout md-gutter md-alignment-center">
-            <router-link :to="randomMeal.idMeal">
+            <router-link :to="{ name: 'meal', params: { id: randomMeal.idMeal } }">
                 <md-card class="md-card" md-with-hover to="/">
 
                     <md-card-media>
@@ -25,7 +25,7 @@
         </md-card-container>
         <md-card-container class="row-two">
             <div v-for="meal in this.mealsList" :key="meal.idMeal">
-                <router-link :to="meal.idMeal">
+                <router-link :to="{ name: 'meal', params: { id: meal.idMeal } }">
                     <md-card class="md-card" md-with-hover to="/">
                         <md-card-media>
                             <img :src="meal.strMealThumb" />
@@ -58,24 +58,28 @@ export default {
         return {
             randomMeal: {},
             mealsList: [],
-            loading: false
+            loading: false,
+            favorites: [],
+            letter: ''
         }
 
     },
+    watch: {
+        letter: 'loadCards'
+    },
     mounted: function () {
         this.loading = true;
-        this.loadCards()
-
+        this.loadCards();
     },
     methods: {
-        loadCards: function (letter) {
+        loadCards: function () {
             this.loading = true
             axiosApi.getRandomMeal().then((result) => {
                 console.log(result.data);
                 this.randomMeal = result.data.meals[0];
                 this.loading = false;
             });
-            axiosApi.getByLetter(letter).then((result) => {
+            axiosApi.getByLetter('s').then((result) => {
                 console.log(result.data);
                 this.mealsList = result.data.meals
                 this.loading = false;

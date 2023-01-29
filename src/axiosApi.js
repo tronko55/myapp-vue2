@@ -19,7 +19,7 @@ export default {
     },
     // per filtrare in base alla lettera
     getByLetter: function (letter) {
-        return axios.get('https://www.themealdb.com/api/json/v1/1/search.php?f=a', {
+        return axios.get('https://www.themealdb.com/api/json/v1/1/search.php', {
             params: {
                 f: letter
             }
