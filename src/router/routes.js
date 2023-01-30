@@ -5,33 +5,23 @@ import DefaultLayoutVue from '@/components/DefaultLayout.vue'
 import MealViewVue from '@/views/MealView.vue'
 import MealsByCategory from '@/views/MealsByCategory.vue'
 
-
 const routes =
   [
     {
       path: '/',
       component: DefaultLayoutVue,
+      redirect: { name: 'home' },
       children: [
         {
-          path: '/',
+          path: '/home',
           name: 'home',
           component: HomeView,
-          children: [
-
-          ]
+          redirect: { name: 'byLetter', params: { letter: 'a' } },
         },
         {
-          path: '/categories',
-          name: 'categories',
-          component: CategoriesView,
-          children: [
-
-          ]
-        },
-        {
-          path: '/favourites',
-          name: 'favourites',
-          component: FavouritesView // alternativa per non importare all'inizio: () => import('../views/Favourites.vue')
+          path: "/home/byLetter/:letter",
+          name: "byLetter",
+          component: HomeView
         },
         {
           path: '/meal/:id',
@@ -39,13 +29,19 @@ const routes =
           component: MealViewVue
         },
         {
+          path: '/categories',
+          name: 'categories',
+          component: CategoriesView,
+        },
+        {
           path: "/category/:category",
           name: "category",
           component: MealsByCategory,
         },
         {
-          path: "/byLetter/:letter",
-          name: "byLetter"
+          path: '/favourites',
+          name: 'favourites',
+          component: FavouritesView
         }
       ]
     }

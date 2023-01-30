@@ -14,7 +14,7 @@
                 <!-- Seconda riga -->
                 <div class="md-toolbar tabs-row">
                     <md-tabs class="md-primary">
-                        <md-tab id="tab-home" md-label="Home" :to="'/'"></md-tab>
+                        <md-tab id="tab-home" md-label="Home" :to="{ name: 'home' }"></md-tab>
                         <md-tab id="tab-pages" md-label="Categories" :to="'/categories'"></md-tab>
                         <md-tab id="tab-favorites" md-label="Favorites" :to="'/favourites'"></md-tab>
                     </md-tabs>
@@ -28,28 +28,25 @@
                     </md-field>
                 </div>
             </div>
-
-
-
         </md-toolbar>
 
         <md-drawer :md-active.sync="menuVisible">
             <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
 
             <md-list>
-                <md-list-item>
+                <md-list-item :to="{ name: 'home' }">
                     <md-icon>home</md-icon>
-                    <md-list-item :to="'/'">Home</md-list-item>
+                    <md-list-item>Home</md-list-item>
                 </md-list-item>
 
-                <md-list-item>
-                    <md-icon>send</md-icon>
-                    <md-list-item :to="'/categories'">Categories</md-list-item>
+                <md-list-item :to="'/categories'">
+                    <md-icon>category</md-icon>
+                    <md-list-item>Categories</md-list-item>
                 </md-list-item>
 
-                <md-list-item>
+                <md-list-item :to="'/favourites'">
                     <md-icon>star</md-icon>
-                    <md-list-item :to="'/favourites'">Favourites</md-list-item>
+                    <md-list-item>Favourites</md-list-item>
                 </md-list-item>
 
             </md-list>

@@ -43,7 +43,7 @@
                 <h4>Instructions</h4>
                 <div v-for="(instruction, index) in instructions" :key="index">
                     <h5>Step {{ index + 1 }}</h5>
-                    <md-content>{{ instruction }}</md-content>
+                    <md-content v-if="instruction != ''">{{ instruction }}</md-content>
                 </div>
             </div>
             <div>
@@ -81,11 +81,11 @@ export default {
             // ho i dettagli
             this.meal = response.data.meals; // prendo il primo valore restituito
             console.log(response.data.meals)
-            this.meal[0].strInstructions = this.meal[0].strInstructions.replace(
-                // per mettere spazio fra frasi delle istruzioni
-                ".", // rimuovi "."
-                ". " // rimpiazza con ". "
-            );
+            // this.meal[0].strInstructions = this.meal[0].strInstructions.replace(
+            //     // per mettere spazio fra frasi delle istruzioni
+            //     ".", // rimuovi "."
+            //     ". " // rimpiazza con ". "
+            // );
             for (let i = 0; i < 15; i++) {
                 if (this.meal[0]["strIngredient" + i] != "") this.lengthIngredients++;
 
@@ -93,6 +93,7 @@ export default {
             }
             this.lengthIngredients = this.lengthIngredients - 1
             this.instructions = this.meal[0].strInstructions.split('\n')
+
             console.log(this.lengthIngredients)
         });
     }

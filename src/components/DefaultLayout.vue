@@ -1,7 +1,9 @@
 <template>
     <div>
+        <!-- la navbar rimane in tutte le schermate -->
         <nav-bar />
         <main>
+            <!-- di default rimanda alla home -->
             <router-view />
         </main>
     </div>

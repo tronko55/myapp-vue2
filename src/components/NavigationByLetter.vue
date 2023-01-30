@@ -2,15 +2,17 @@
     <div>
         <div class="letter-nav">
             <router-link v-for="letter in letters" :key="letter"
-                :to="{ name: 'byLetter', params: { letter: letter } }">{{
+                :to="{ name: 'byLetter', params: { letter: letter.toLocaleLowerCase() } }">{{
     letter
                 }}</router-link>
         </div>
         <router-view />
+
     </div>
 </template>
 
 <script>
+// import axiosApi from '@/axiosApi';
 export default {
     data() {
         return {
@@ -23,8 +25,7 @@ export default {
             required: true,
 
         }
-    },
-
+    }
 }
 </script>
 
