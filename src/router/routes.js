@@ -1,9 +1,12 @@
 import HomeView from '../views/HomeView.vue'
 import FavouritesView from "../views/FavouritesView.vue"
 import CategoriesView from "../views/CategoriesView.vue"
+import IngredientsView from "../views/IngredientsView.vue"
 import DefaultLayoutVue from '@/components/DefaultLayout.vue'
 import MealViewVue from '@/views/MealView.vue'
 import MealsByCategory from '@/views/MealsByCategory.vue'
+import MealsByIngredient from '@/views/MealsByIngredient.vue'
+
 
 const routes =
   [
@@ -37,6 +40,16 @@ const routes =
           path: "/category/:category",
           name: "category",
           component: MealsByCategory,
+        },
+        {
+          path: '/ingredients',
+          name: 'ingredients',
+          component: IngredientsView,
+        },
+        {
+          path: "/ingredient/:ingredient",
+          name: "ingredient",
+          component: MealsByIngredient,
         },
         {
           path: '/favourites',

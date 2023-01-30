@@ -20,10 +20,14 @@
             </div>
             <!-- immagine -->
             <div>
+
                 <div>
                     <img :src="meal[0].strMealThumb" width="600px" />
-
+                    <div>
+                        <md-button class="md-raised md-primary" :href="meal[0].strYoutube">Youtube Video</md-button>
+                    </div>
                 </div>
+
             </div>
             <!-- ingredienti -->
             <md-list class="md-layout-item">
@@ -51,6 +55,7 @@
                 <!-- button: torna indietro -->
                 <md-button class="md-raised md-primary" @click.prevent="$router.back()">TORNA ALLA LISTA</md-button>
             </div>
+
         </div>
     </div>
 </template>

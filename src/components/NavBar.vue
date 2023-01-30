@@ -16,17 +16,19 @@
                     <md-tabs class="md-primary">
                         <md-tab id="tab-home" md-label="Home" :to="{ name: 'home' }"></md-tab>
                         <md-tab id="tab-pages" md-label="Categories" :to="'/categories'"></md-tab>
+                        <md-tab id="tab-ingredients" md-label="Ingredients" :to="'/ingredients'"></md-tab>
                         <md-tab id="tab-favorites" md-label="Favorites" :to="'/favourites'"></md-tab>
                     </md-tabs>
                 </div>
 
-                <div class="md-toolbar-section-end">
+                <!-- <div class="md-toolbar-section-end">
                     <md-field class="search-bar">
                         <md-input v-model="searchTerm" @input="search" @keyup.enter="search"
                             class="md-search-field-input" type="text" placeholder="Search"></md-input>
                         <md-icon class="md-search-field-icon" @click="search">search</md-icon>
                     </md-field>
-                </div>
+                </div> -->
+
             </div>
         </md-toolbar>
 
@@ -42,6 +44,12 @@
                 <md-list-item :to="'/categories'">
                     <md-icon>category</md-icon>
                     <md-list-item>Categories</md-list-item>
+                </md-list-item>
+
+
+                <md-list-item :to="'/ingredients'">
+                    <md-icon>egg</md-icon>
+                    <md-list-item>Ingredients</md-list-item>
                 </md-list-item>
 
                 <md-list-item :to="'/favourites'">
@@ -64,9 +72,9 @@ export default {
         searchTerm: ""
     }),
     methods: {
-        search() {
-            // perform search here using the `searchTerm` variable
-        }
+        // search() {
+        //     // perform search here using the `searchTerm` variable
+        // }
     }
 }
 </script>
