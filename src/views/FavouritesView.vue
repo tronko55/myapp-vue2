@@ -24,7 +24,7 @@ export default {
     Pagina dei preferiti
     <md-list-item v-for="favourite in favourites" :key="favourite.id">
       {{ favourite.name }}
-      <md-button @click.prevent="removeFavourite(favourite.id)">Remove</md-button>
+      <md-button @click.prevent="removeFavourite(favourite)">Remove</md-button>
     </md-list-item>
 
   </div>
@@ -40,6 +40,14 @@ export default {
       loading: false,
     };
   },
+  watch: {
+    favourites: function () {
+      firebaseService.getFavourites().then((favourites) => {
+        this.favourites = favourites;
+        this.loading = false;
+      });
+    },
+  },
   mounted() {
     this.loading = true;
     firebaseService.getFavourites().then((favourites) => {
@@ -48,11 +56,11 @@ export default {
     });
   },
   methods: {
-    removeFavourite(favouriteId) {
+    removeFavourite(favourite) {
       this.loading = true;
-      firebaseService.removeFromFavourites({ id: favouriteId }).then(() => {
+      firebaseService.removeFromFavourites(favourite).then(() => {
         this.favourites = this.favourites.filter(
-          (favourite) => favourite.id !== favouriteId
+          (fav) => fav.id !== favourite.id
         );
         this.loading = false;
       });

@@ -21,31 +21,15 @@ const db = firebase.firestore();
 
 // qui dentro tutte le funzioni per il manage di dati nel database
 export default {
-    // login: function (username) {
-    //     // il parametro inserito serve per distinguere i preferiti dell'utente locale
-    //     // inserisco utente nel localstorage
-    //     localStorage.setItem("user", username);
-    // },
-    // logout: function () {
-    //     // elimino utente dal localstorage
-    //     localStorage.removeItem("user");
-    // },
-    // isAuthenticated: function () {
-    //     // controllo che l'utente sia nel localstorage
-    //     return localStorage.getItem("user") != null;
-    // },
-    // getUsername: function () {
-    //     // ritorno l'utente
-    //     return localStorage.getItem("user");
-    // },
     // funzioni dei preferiti
     addToFavourites: async function (meal) {
         // meal da inserire nel db dei preferiti
-        // creo un nuovo record (riga nella tabella db) nei favorites (db)
+        // creo un nuovo record (riga nella tabella db) nei favourites (db)
         /*
           meal => {id, user, name, image}
         */
-        const id = meal.id;
+
+        const id = meal.idMeal;
         meal.name = meal.strMeal; // nome del piatto
         meal.image = meal.strMealThumb; // immagine del piatto
         return db
@@ -60,7 +44,8 @@ export default {
     removeFromFavourites: async function (meal) {
         // param: meal --> meal da eliminare
         // rimuovo record usando l'id univoco
-        const id = meal.id;
+        const id = meal.idMeal;
+        console.log(id)
         return db
             .collection("favourites")
             .doc(id)
@@ -71,7 +56,7 @@ export default {
             });
     },
     getFavourites: async function () {
-        // prendo tutti i favorites di un utente
+        // prendo tutti i favourites 
         const result = await db
             .collection("favourites")
             .get();

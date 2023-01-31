@@ -25,7 +25,7 @@ import firebaseService from '@/firebaseService';
 export default {
     data: function () {
         return {
-            favorites: [],
+            favourites: [],
         }
     },
     props: ['meal'],
@@ -40,14 +40,15 @@ export default {
     },
     methods: {
         toggleFavourites(meal) {
-            let index = this.favorites.findIndex(favorite => favorite.idMeal === meal.idMeal);
+            firebaseService.getFavourites();
+            let index = this.favourites.findIndex(favorite => favorite.idMeal === meal.idMeal);
             if (index === -1) {
-                // not in favorites, add it
-                this.favorites.push(meal);
+                // not in favourites, add it
+                this.favourites.push(meal);
                 firebaseService.addToFavourites(meal);
             } else {
-                // already in favorites, remove it
-                this.favorites.splice(index, 1);
+                // already in favourites, remove it
+                this.favourites.splice(index, 1);
                 firebaseService.removeFromFavourites(meal);
             }
         },

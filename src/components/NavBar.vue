@@ -21,13 +21,6 @@
                     </md-tabs>
                 </div>
 
-                <!-- <div class="md-toolbar-section-end">
-                    <md-field class="search-bar">
-                        <md-input v-model="searchTerm" @input="search" @keyup.enter="search"
-                            class="md-search-field-input" type="text" placeholder="Search"></md-input>
-                        <md-icon class="md-search-field-icon" @click="search">search</md-icon>
-                    </md-field>
-                </div> -->
 
             </div>
         </md-toolbar>
@@ -70,12 +63,7 @@ export default {
     data: () => ({
         menuVisible: false,
         searchTerm: ""
-    }),
-    methods: {
-        // search() {
-        //     // perform search here using the `searchTerm` variable
-        // }
-    }
+    })
 }
 </script>
 
