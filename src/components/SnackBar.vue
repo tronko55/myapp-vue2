@@ -11,9 +11,3 @@
 <script>
 
 </script>
-
-<style scoped>
-.button {
-    text-emphasis-color: white;
-}
-</style>

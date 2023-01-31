@@ -18,8 +18,8 @@
 
 <script>
 import firebaseService from '@/firebaseService';
-// import { MdSnackbar } from 'vue-material/dist/components';
 import SnackBar from '@/components/SnackBar.vue'
+
 export default {
   data() {
     return {
@@ -68,8 +68,11 @@ export default {
     }
   },
   components: {
-    // MdSnackbar,
     SnackBar
   }
 };
 </script>
+
+<style >
+
+</style>
