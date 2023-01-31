@@ -8,11 +8,7 @@
                     <span class="md-title">{{ meal[0].strMeal }}</span>
                 </div>
                 <div class="md-toolbar-section-end">
-                    <md-button>
-                        <md-icon>
-                            bookmark_add
-                        </md-icon>
-                    </md-button>
+                    <toggle-favorites-button :meal="meal[0]"></toggle-favorites-button>
                 </div>
             </div>
             <div class="md-toolbar-row">
@@ -62,6 +58,9 @@
 
 <script>
 import axiosApi from "../axiosApi";
+import ToggleFavoritesButton from "@/components/ToggleFavoritesButton.vue";
+
+
 
 export default {
     name: "MealView",
@@ -101,6 +100,9 @@ export default {
 
             console.log(this.lengthIngredients)
         });
+    },
+    components: {
+        ToggleFavoritesButton
     }
 };
 </script>

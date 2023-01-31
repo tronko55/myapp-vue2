@@ -11,17 +11,14 @@
                     <div class="md-subhead">{{ meal.strCategory }}</div>
                 </md-card-header>
                 <md-card-actions>
-                    <md-button @click.prevent="toggleFavourites(meal)">
-                        <md-icon>bookmark_add</md-icon>
-                    </md-button>
-                    <md-button>Read more</md-button>
+                    <toggle-favorites-button :meal="meal"></toggle-favorites-button>
                 </md-card-actions>
             </md-card>
         </router-link>
     </div>
 </template>
 <script>
-import firebaseService from '@/firebaseService';
+import ToggleFavoritesButton from './ToggleFavoritesButton.vue';
 export default {
     data: function () {
         return {
@@ -29,30 +26,8 @@ export default {
         }
     },
     props: ['meal'],
-    mounted: function () {
-        this.loading = true;
-
-        firebaseService.getFavourites().then((favourites) => {
-            this.favourites = favourites;
-            this.loading = false;
-        });
-
-    },
-    methods: {
-        toggleFavourites(meal) {
-            firebaseService.getFavourites();
-            let index = this.favourites.findIndex(favorite => favorite.idMeal === meal.idMeal);
-            if (index === -1) {
-                // not in favourites, add it
-                this.favourites.push(meal);
-                firebaseService.addToFavourites(meal);
-            } else {
-                // already in favourites, remove it
-                this.favourites.splice(index, 1);
-                firebaseService.removeFromFavourites(meal);
-            }
-        },
-
-    },
+    components: {
+        ToggleFavoritesButton
+    }
 }
 </script>

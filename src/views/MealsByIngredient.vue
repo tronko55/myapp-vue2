@@ -3,29 +3,9 @@
         <md-progress-bar v-show="loading" class="md-accent" md-mode="query"></md-progress-bar>
         filtra per ingrediente
 
-        <div class="md-layout-item md-gutter md-alignment-center">
-
-            <md-card-container class="row-two">
-                <div v-for="meal in mealsList" :key="meal.idMeal">
-                    <router-link :to="{ name: 'meal', params: { id: meal.idMeal } }">
-                        <md-card class="md-card" md-with-hover to="/">
-                            <md-card-media>
-                                <img :src="meal.strMealThumb" />
-                            </md-card-media>
-                            <md-card-header>
-                                <div class="md-title">{{ meal.strMeal }}</div>
-                                <div class="md-subhead">{{ meal.strCategory }}</div>
-                            </md-card-header>
-                            <md-card-actions>
-                                <md-button @click.prevent>
-                                    <md-icon>bookmark_add</md-icon>
-                                </md-button>
-                                <md-button>Read more</md-button>
-                            </md-card-actions>
-                        </md-card>
-                    </router-link>
-                </div>
-            </md-card-container>
+        <div class="row-two">
+            <!-- visualizza tutti i pasti con quella lettera -->
+            <card-component v-for="meal in mealsList" :meal="meal" :key="meal.idMeal" />
 
         </div>
     </div>
@@ -33,7 +13,7 @@
 
 <script>
 import axiosApi from "../axiosApi";
-
+import CardComponent from "@/components/CardComponent.vue";
 export default {
     name: "MealsByIngredient",
     data: function () {
@@ -53,6 +33,9 @@ export default {
             this.loading = false
         });
 
+    },
+    components: {
+        CardComponent
     }
 }
 
