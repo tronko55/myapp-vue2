@@ -1,7 +1,4 @@
 import firebase from "firebase/app";
-// import firebase and its proprierties directly
-// import * as firebase from 'firebase/app';
-
 import "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -18,31 +15,26 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-
 // qui dentro tutte le funzioni per il manage di dati nel database
 export default {
     // funzioni dei preferiti
+    // la funzione richiede un parametro, il meal da inserire nel database dei preferiti, e ne prende l'id, il nome e l'immagine
     addToFavourites: async function (meal) {
-        // meal da inserire nel db dei preferiti
-        // creo un nuovo record (riga nella tabella db) nei favourites (db)
-        /*
-          meal => {id, user, name, image}
-        */
-
         const id = meal.idMeal;
         meal.name = meal.strMeal; // nome del piatto
         meal.image = meal.strMealThumb; // immagine del piatto
+        // creo un nuovo documento nella raccolta di favourites (db)
         return db
-            .collection("favourites") // collezione del db (favourites)
+            .collection("favourites") // accedi alla collezione 'favourites'
             .doc(id) // tabella della collection (doc) riferita all'id
             .set(meal) // meal scelto come "favourite" da inserire
             .then(() => {
                 console.log("Aggiunto ai preferiti");
-                return meal; // da passare alla funzione addtofavourites in Favourites.vue
+                return meal;
             });
     },
+    // qui il parametro è il meal da eliminare dall'elenco
     removeFromFavourites: async function (meal) {
-        // param: meal --> meal da eliminare
         // rimuovo record usando l'id univoco
         const id = meal.idMeal;
         console.log(id)
@@ -55,6 +47,7 @@ export default {
                 return meal;
             });
     },
+    // carica i favourites prendendoli dall'elenco
     getFavourites: async function () {
         // prendo tutti i favourites 
         const result = await db
@@ -62,11 +55,10 @@ export default {
             .get();
         const arrayFav = [];
         result.forEach((doc) => {
-            // per ogni elemento (doc) di result
+            // per ogni elemento (doc) di result metti nell'arrai i dati dei meals
             arrayFav.push(doc.data());
-
         });
-        arrayFav.pop()
+        arrayFav.pop() // elimina l'ultimo elemento che è uno a caso che serviva per inizializzare la raccolta
         return arrayFav;
     }
 };

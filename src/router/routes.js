@@ -7,7 +7,7 @@ import MealViewVue from '@/views/MealView.vue'
 import MealsByCategory from '@/views/MealsByCategory.vue'
 import MealsByIngredient from '@/views/MealsByIngredient.vue'
 
-
+// definisci le destinazioni del router per SPA e quali elementi vengono visualizzati
 const routes =
   [
     {

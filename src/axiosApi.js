@@ -5,6 +5,7 @@ export default {
     getMealsCategories: function () {
         return axios.get('https://www.themealdb.com/api/json/v1/1/categories.php')
     },
+    // same per gli ingredienti
     getIngredients: function () {
         return axios.get('https://www.themealdb.com/api/json/v1/1/list.php?i=list')
     },

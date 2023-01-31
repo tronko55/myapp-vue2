@@ -41,10 +41,10 @@
             <div>
                 <!-- procedimento -->
                 <h4>Instructions</h4>
-                <div v-for="(instruction, index) in instructions" :key="index">
+                <ul v-for="(instruction, index) in instructions" :key="index">
                     <h5>Step {{ index + 1 }}</h5>
-                    <md-content v-if="instruction != ''">{{ instruction }}</md-content>
-                </div>
+                    <li v-if="instruction != ''">{{ instruction }}</li>
+                </ul>
             </div>
             <div>
                 <!-- .prevent serve per non ricaricare la pagina -->

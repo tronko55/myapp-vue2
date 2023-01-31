@@ -1,10 +1,11 @@
 <template>
     <div>
         <div class="letter-nav">
+            <!-- mostra una lettera per ogni lettera dell'alfabeto e ogni lettera è un link alla pagina che ha come parametro quella lettera -->
             <router-link v-for="letter in letters" :key="letter"
-                :to="{ name: 'byLetter', params: { letter: letter.toLocaleLowerCase() } }">{{
-    letter
-                }}</router-link>
+                :to="{ name: 'byLetter', params: { letter: letter.toLocaleLowerCase() } }">
+                {{ letter }}
+            </router-link>
         </div>
         <router-view />
 

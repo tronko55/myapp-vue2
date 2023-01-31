@@ -1,0 +1,23 @@
+.instruction-lists {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+
+    text-align: center;
+    line-height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.span {
+    background-color: #FF642F;
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+}

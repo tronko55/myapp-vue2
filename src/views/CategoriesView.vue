@@ -1,10 +1,10 @@
 <template>
     <div>
+        <!-- come al solito mostra la barra di caricamento finché non finisce di caricare -->
         <md-progress-bar v-show="loading" class="md-accent" md-mode="query"></md-progress-bar>
 
-        <h1>Categories</h1>
+        <h5 class="title">Browse by Category</h5>
         <div class="md-layout md-gutter md-alignment-center">
-
             <div class="md-card" v-for="category in categories" :key="category.strCategory">
                 <router-link :to="{ name: 'category', params: { category: category.strCategory } }">
                     <md-card md-with-hover>
@@ -12,25 +12,17 @@
                             <md-card-media md-ratio="16/9">
                                 <img :src="category.strCategoryThumb">
                             </md-card-media>
-
                             <md-card-area>
                                 <md-card-header>
                                     <span class="md-title">{{ category.strCategory }}</span>
                                 </md-card-header>
-
-                                <!-- <md-card-actions>
-                            <md-button class="md-icon-button">
-                                <md-icon>favorite</md-icon>
-                            </md-button>
-
-                        </md-card-actions> -->
-
                             </md-card-area>
                         </md-card-media-cover>
                     </md-card>
                 </router-link>
             </div>
         </div>
+
     </div>
 </template>
     
