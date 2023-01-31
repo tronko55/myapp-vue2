@@ -2,31 +2,27 @@
 <template>
   <div>
     <md-progress-bar v-show="loading" class="md-accent" md-mode="query"></md-progress-bar>
-    Pagina dei preferiti
-    <md-list-item v-for="favourite in favourites" :key="favourite.id">
-      {{ favourite.name }}
-      <md-button @click.prevent="removeFavourite(favourite)">Remove</md-button>
-    </md-list-item>
-    <!-- snackbar component -->
-    <SnackBar></SnackBar>
-    <md-snackbar :md-active="snackbarActive" :md-duration="3000" @update:md-active="updateSnackbarActive">
-      Item removed successfully
-      <md-button @click="undoRemoveFavourite(undoItem)">Undo</md-button>
-    </md-snackbar>
+    <h1>Favourites</h1>
+    <h3>Here are listed the recipes that you have saved for later</h3>
+
+    <div class="row-two md-layout-item md-gutter md-alignment-center">
+      <card-component-vue v-for="meal in favourites" :key="meal.id" :meal="meal"></card-component-vue>
+    </div>
+
+
+
   </div>
 </template>
 
 <script>
 import firebaseService from '@/firebaseService';
-import SnackBar from '@/components/SnackBar.vue'
+import CardComponentVue from '@/components/CardComponent.vue';
 
 export default {
   data() {
     return {
       favourites: [],
       loading: false,
-      snackbarActive: false,
-      undoItem: null
     };
   },
   watch: {
@@ -41,6 +37,7 @@ export default {
     this.loading = true;
     firebaseService.getFavourites().then((favourites) => {
       this.favourites = favourites;
+      console.log(favourites)
       this.loading = false;
     });
   },
@@ -53,22 +50,12 @@ export default {
           (fav) => fav.id !== favourite.id
         );
         this.loading = false;
-        this.snackbarActive = true;
+
       });
     },
-    undoRemoveFavourite(undoItem) {
-      firebaseService.addToFavourites(undoItem).then(() => {
-        this.favourites.push(undoItem);
-        this.snackbarActive = false;
-        this.undoItem = null;
-      });
-    },
-    updateSnackbarActive(value) {
-      this.snackbarActive = value;
-    }
   },
   components: {
-    SnackBar
+    CardComponentVue
   }
 };
 </script>

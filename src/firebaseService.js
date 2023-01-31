@@ -64,7 +64,9 @@ export default {
         result.forEach((doc) => {
             // per ogni elemento (doc) di result
             arrayFav.push(doc.data());
+
         });
+        arrayFav.pop()
         return arrayFav;
     }
 };

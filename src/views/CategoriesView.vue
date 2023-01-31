@@ -2,6 +2,7 @@
     <div>
         <md-progress-bar v-show="loading" class="md-accent" md-mode="query"></md-progress-bar>
 
+        <h1>Categories</h1>
         <div class="md-layout md-gutter md-alignment-center">
 
             <div class="md-card" v-for="category in categories" :key="category.strCategory">
