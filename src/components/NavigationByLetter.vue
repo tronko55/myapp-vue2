@@ -22,8 +22,6 @@ export default {
     props: {
         letter: {
             type: String,
-            required: true,
-
         }
     }
 }

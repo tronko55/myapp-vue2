@@ -1,6 +1,6 @@
-// import firebase from "firebase/app";
+import firebase from "firebase/app";
 // import firebase and its proprierties directly
-import * as firebase from 'firebase/app';
+// import * as firebase from 'firebase/app';
 
 import "firebase/firestore";
 
@@ -39,7 +39,7 @@ export default {
     //     return localStorage.getItem("user");
     // },
     // funzioni dei preferiti
-    addToFavourites: function (meal) {
+    addToFavourites: async function (meal) {
         // meal da inserire nel db dei preferiti
         // creo un nuovo record (riga nella tabella db) nei favorites (db)
         /*
@@ -57,7 +57,7 @@ export default {
                 return meal; // da passare alla funzione addtofavourites in Favourites.vue
             });
     },
-    removeFromFavourites: function (meal) {
+    removeFromFavourites: async function (meal) {
         // param: meal --> meal da eliminare
         // rimuovo record usando l'id univoco
         const id = meal.id;
@@ -70,18 +70,16 @@ export default {
                 return meal;
             });
     },
-    getFavourites: function () {
+    getFavourites: async function () {
         // prendo tutti i favorites di un utente
-        return db
+        const result = await db
             .collection("favourites")
-            .get()
-            .then((result) => {
-                const arrayFav = [];
-                result.forEach((doc) => {
-                    // per ogni elemento (doc) di result
-                    arrayFav.push(doc.data());
-                });
-                return arrayFav; // passo al mounted in Favourites.vue un vettore con tutti i preferiti
-            });
+            .get();
+        const arrayFav = [];
+        result.forEach((doc) => {
+            // per ogni elemento (doc) di result
+            arrayFav.push(doc.data());
+        });
+        return arrayFav;
     }
 };
