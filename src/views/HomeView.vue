@@ -43,7 +43,7 @@
                             <div class="md-subhead">{{ meal.strCategory }}</div>
                         </md-card-header>
                         <md-card-actions>
-                            <md-button @click.prevent>
+                            <md-button @click.prevent="addToFavourites(meal.idMeal)">
                                 <md-icon>bookmark_add</md-icon>
                             </md-button>
                             <md-button>Read more</md-button>
@@ -61,7 +61,7 @@ import axiosApi from '@/axiosApi';
 import NavigationByLetter from '@/components/NavigationByLetter.vue';
 import EmptyStateVue from '@/components/EmptyState.vue';
 
-// import firebaseService from '@/firebaseService';
+import firebaseService from '@/firebaseService';
 
 export default {
     data: function () {
@@ -102,6 +102,19 @@ export default {
                 this.loading = false;
             });
         },
+        addToFavourites(meal) {
+            this.loading = true;
+            firebaseService
+                .addToFavourites(meal)
+                .then(() => {
+                    this.loading = false;
+                })
+                .catch((error) => {
+                    console.error(error);
+                    this.loading = false;
+                });
+
+        }
     },
     // componenti utilizzati in questa pagina
     components: {

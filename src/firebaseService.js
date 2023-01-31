@@ -1,4 +1,7 @@
-import firebase from "firebase/app";
+// import firebase from "firebase/app";
+// import firebase and its proprierties directly
+import * as firebase from 'firebase/app';
+
 import "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -18,49 +21,48 @@ const db = firebase.firestore();
 
 // qui dentro tutte le funzioni per il manage di dati nel database
 export default {
-    login: function (username) {
-        // il parametro inserito serve per distinguere i preferiti dell'utente locale
-        // inserisco utente nel localstorage
-        localStorage.setItem("user", username);
-    },
-    logout: function () {
-        // elimino utente dal localstorage
-        localStorage.removeItem("user");
-    },
-    isAuthenticated: function () {
-        // controllo che l'utente sia nel localstorage
-        return localStorage.getItem("user") != null;
-    },
-    getUsername: function () {
-        // ritorno l'utente
-        return localStorage.getItem("user");
-    },
+    // login: function (username) {
+    //     // il parametro inserito serve per distinguere i preferiti dell'utente locale
+    //     // inserisco utente nel localstorage
+    //     localStorage.setItem("user", username);
+    // },
+    // logout: function () {
+    //     // elimino utente dal localstorage
+    //     localStorage.removeItem("user");
+    // },
+    // isAuthenticated: function () {
+    //     // controllo che l'utente sia nel localstorage
+    //     return localStorage.getItem("user") != null;
+    // },
+    // getUsername: function () {
+    //     // ritorno l'utente
+    //     return localStorage.getItem("user");
+    // },
     // funzioni dei preferiti
-    addToFavorites: function (meal) {
+    addToFavourites: function (meal) {
         // meal da inserire nel db dei preferiti
         // creo un nuovo record (riga nella tabella db) nei favorites (db)
         /*
           meal => {id, user, name, image}
         */
-        const id = this.getUsername() + "-" + meal.idMeal; // costruisco id univoco = username-idMeal
-        meal.user = this.getUsername();
+        const id = meal.id;
         meal.name = meal.strMeal; // nome del piatto
         meal.image = meal.strMealThumb; // immagine del piatto
         return db
-            .collection("favorites") // collezione del db (favorites)
+            .collection("favourites") // collezione del db (favourites)
             .doc(id) // tabella della collection (doc) riferita all'id
-            .set(meal) // drink scelto come "favorite" da inserire
+            .set(meal) // meal scelto come "favourite" da inserire
             .then(() => {
                 console.log("Aggiunto ai preferiti");
-                return meal; // da passare alla funzione addtofavorites in Favorites.vue
+                return meal; // da passare alla funzione addtofavourites in Favourites.vue
             });
     },
-    removeFromFavorites: function (meal) {
+    removeFromFavourites: function (meal) {
         // param: meal --> meal da eliminare
         // rimuovo record usando l'id univoco
-        const id = this.getUsername() + "-" + meal.id.Meal;
+        const id = meal.id;
         return db
-            .collection("favorites")
+            .collection("favourites")
             .doc(id)
             .delete()
             .then(() => {
@@ -68,11 +70,10 @@ export default {
                 return meal;
             });
     },
-    getFavorites: function () {
+    getFavourites: function () {
         // prendo tutti i favorites di un utente
         return db
-            .collection("favorites")
-            .where("user", "==", this.getUsername())
+            .collection("favourites")
             .get()
             .then((result) => {
                 const arrayFav = [];
@@ -80,7 +81,7 @@ export default {
                     // per ogni elemento (doc) di result
                     arrayFav.push(doc.data());
                 });
-                return arrayFav; // passo al mounted in Favorites.vue un vettore con tutti i preferiti
+                return arrayFav; // passo al mounted in Favourites.vue un vettore con tutti i preferiti
             });
     }
 };
