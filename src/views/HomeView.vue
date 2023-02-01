@@ -16,7 +16,7 @@
 
 
             <!-- sezione con i piatti per lettera -->
-            <div class="row-two">
+            <div class="row-two ">
                 <!-- se la lista è vuota allora visualizza il componente empty state -->
                 <empty-state-vue v-if="this.mealsList === null"></empty-state-vue>
                 <!-- visualizza tutti i pasti con quella lettera -->

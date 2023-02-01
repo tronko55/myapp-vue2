@@ -1,8 +1,8 @@
 <template>
     <div>
         <md-progress-bar v-show="loading" class="md-accent" md-mode="query"></md-progress-bar>
-        filtra per ingrediente
-
+        <back-button></back-button>
+        <h5 class="title">Ingredient: {{ this.$route.params.ingredient }}</h5>
         <div class="row-two">
             <!-- visualizza tutti i pasti con quella lettera -->
             <card-component v-for="meal in mealsList" :meal="meal" :key="meal.idMeal" />

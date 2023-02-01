@@ -2,8 +2,8 @@
 <template>
   <div>
     <md-progress-bar v-show="loading" class="md-accent" md-mode="query"></md-progress-bar>
-    <h1>Favourites</h1>
-    <h3>Here are listed the recipes that you have saved for later</h3>
+    <h1 class="title">Favourites</h1>
+    <h3 class="sub">Here are listed the recipes that you have saved for later</h3>
 
     <div class="row-two md-layout-item md-gutter md-alignment-center">
       <card-component-vue v-for="meal in favourites" :key="meal.id" :meal="meal"></card-component-vue>
@@ -61,5 +61,9 @@ export default {
 </script>
 
 <style >
-
+.sub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
