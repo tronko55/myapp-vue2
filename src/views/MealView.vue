@@ -5,9 +5,8 @@
             <div class="title">{{ meal[0].strMeal }}</div>
             <toggle-favorites-button class="md-toolbar-section-end" :meal="meal[0]"></toggle-favorites-button>
         </div>
-
+        <!-- contenuti -->
         <div class="row-two">
-
             <img :src="meal[0].strMealThumb" />
             <md-button class="md-raised md-primary" :href="meal[0].strYoutube">Youtube Video</md-button>
             <div class="row">
@@ -34,10 +33,8 @@
                 </div>
             </div>
             <back-button></back-button>
-
         </div>
     </div>
-
 </template>
 
 <script>
@@ -57,26 +54,30 @@ export default {
         };
     },
     mounted: function () {
+        // per il checkbox
         for (let i = 0; i < this.lengthIngredients; i++) {
             this.ingredientChecked.push(false);
         }
         console.log("idMealPath: " + this.$route.params.id);
+        // prendi l'id del pasto dal router
         this.idMeal = this.$route.params.id
         console.log(this.idMeal);
-        this.lengthIngredients = 0;
-        axiosApi.getMealDetails(this.idMeal).then((response) => {
-            // ho i dettagli
-            this.meal = response.data.meals; // prendo il primo valore restituito
-            console.log(response.data.meals)
-            for (let i = 0; i < 15; i++) {
-                if (this.meal[0]["strIngredient" + i] != "") this.lengthIngredients++;
-                // scorro gli ingredienti (è un JSON -> un campo con gli ingredienti scritti come nome#), mi segno in lenghtIngredients quanti ne ho
-            }
-            this.lengthIngredients = this.lengthIngredients - 1
-            this.instructions = this.meal[0].strInstructions.split('\n')
 
-            console.log(this.lengthIngredients)
-        });
+        // prendi i dettagli del meal a partire dall'id
+        axiosApi.getMealDetails(this.idMeal)
+            .then((response) => {
+                // ho i dettagli
+                this.meal = response.data.meals; // prendo il primo valore restituito
+                console.log(response.data.meals)
+
+                // mi serve per non mettere in elenco lista elementi nuovi
+                for (let i = 0; i < 15; i++) {
+                    if (this.meal[0]["strIngredient" + i] != "") this.lengthIngredients++;
+                }
+                this.lengthIngredients = this.lengthIngredients - 1
+                this.instructions = this.meal[0].strInstructions.split('\n')
+                console.log(this.lengthIngredients)
+            });
     },
     components: {
         ToggleFavoritesButton,

@@ -10,7 +10,3 @@ export default {
     name: 'BackButton'
 }
 </script>
-
-<style>
-
-</style>

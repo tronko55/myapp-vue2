@@ -4,7 +4,6 @@
     <div>
         <div>
             <h1 class="title">Ingredients</h1>
-
             <div class="search">
                 <md-input type="text" v-model="keyword" placeholder="Search for Ingredients">
                 </md-input>
@@ -27,7 +26,6 @@
     </div>
 </template>
 
-
 <script>
 import axiosApi from '@/axiosApi';
 
@@ -39,6 +37,7 @@ export default {
             loading: true,
         }
     },
+    // filtra in tempo reale i contenuti in base alla ricerca dell'utente
     computed: {
         filteredIngredients() {
             return this.ingredients.filter(i =>
@@ -47,7 +46,6 @@ export default {
         }
     },
     mounted: function () {
-
         axiosApi.getIngredients().then(({ data }) => {
             this.ingredients = data.meals;
             console.log(this.ingredients)
@@ -79,6 +77,7 @@ export default {
     }
 }
 </style>
+
 <!-- con questo codice visualizzo venti elementi per volta ed ho un bottone per caricarne di più.
 non ho quindi integrato il filtro -->
 

@@ -6,7 +6,6 @@
         <div class="row-two">
             <!-- visualizza tutti i pasti con quella lettera -->
             <card-component v-for="meal in mealsList" :meal="meal" :key="meal.idMeal" />
-
         </div>
     </div>
 </template>
@@ -32,7 +31,6 @@ export default {
             this.mealsList = result.data.meals
             this.loading = false
         });
-
     },
     components: {
         CardComponent
@@ -40,7 +38,3 @@ export default {
 }
 
 </script>
-
-<style>
-
-</style>

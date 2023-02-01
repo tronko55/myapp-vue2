@@ -8,12 +8,10 @@
             </router-link>
         </div>
         <router-view />
-
     </div>
 </template>
 
 <script>
-// import axiosApi from '@/axiosApi';
 export default {
     data() {
         return {
@@ -21,9 +19,7 @@ export default {
         }
     },
     props: {
-        letter: {
-            type: String,
-        }
+        letter: String
     }
 }
 </script>
@@ -39,10 +35,6 @@ export default {
     font-size: 16px;
     text-decoration: none;
     color: black;
-
-    &:hover {
-        background-color: #eee;
-    }
 }
 
 @media (max-width: 600px) {

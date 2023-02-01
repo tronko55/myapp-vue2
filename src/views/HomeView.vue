@@ -48,6 +48,7 @@ export default {
             this.loadCards(newLetter)
         },
     },
+    // come prima cosa monta le card della lettera e quella randomica
     mounted: function () {
         this.loading = true;
         axiosApi.getRandomMeal().then((result) => {
@@ -81,7 +82,7 @@ export default {
 <style>
 .md-card {
     width: 320px;
-    margin: 4px;
+    margin: 8px;
     display: inline-block;
     vertical-align: top;
 }

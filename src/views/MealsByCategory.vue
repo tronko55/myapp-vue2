@@ -1,14 +1,11 @@
 <template>
     <div>
         <md-progress-bar v-show="loading" class="md-accent" md-mode="query"></md-progress-bar>
-
         <back-button></back-button>
         <h5 class="title">Category: {{ this.$route.params.category }}</h5>
-
         <div class="row-two">
             <!-- visualizza tutti i pasti con quella lettera -->
             <card-component v-for="meal in mealsList" :meal="meal" :key="meal.idMeal" />
-
         </div>
     </div>
 </template>
@@ -40,9 +37,4 @@ export default {
         CardComponent
     }
 }
-
 </script>
-
-<style>
-
-</style>

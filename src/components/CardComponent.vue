@@ -17,6 +17,7 @@
         </router-link>
     </div>
 </template>
+
 <script>
 import ToggleFavoritesButton from './ToggleFavoritesButton.vue';
 export default {

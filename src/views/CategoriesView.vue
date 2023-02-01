@@ -2,7 +2,6 @@
     <div>
         <!-- come al solito mostra la barra di caricamento finché non finisce di caricare -->
         <md-progress-bar v-show="loading" class="md-accent" md-mode="query"></md-progress-bar>
-
         <h5 class="title">Browse by Category</h5>
         <div class="md-layout md-gutter md-alignment-center">
             <div class="md-card" v-for="category in categories" :key="category.strCategory">
@@ -22,7 +21,6 @@
                 </router-link>
             </div>
         </div>
-
     </div>
 </template>
     
@@ -44,7 +42,6 @@ export default {
             this.loading = false
         });
     },
-
 }
 </script>
 
@@ -54,6 +51,5 @@ export default {
     margin: 4px;
     display: inline-block;
     vertical-align: top;
-
 }
 </style>
