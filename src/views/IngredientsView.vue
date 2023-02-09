@@ -5,8 +5,10 @@
         <div>
             <h1 class="title">Ingredients</h1>
             <div class="search">
-                <md-input type="text" v-model="keyword" placeholder="Search for Ingredients">
-                </md-input>
+                <md-field>
+                    <md-input type="text" v-model="keyword" placeholder="Search for Ingredients">
+                    </md-input>
+                </md-field>
             </div>
         </div>
         <div class="card-container">
